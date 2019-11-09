@@ -1,0 +1,25 @@
+<form action="" class="col-md-4 offset-4 mt-5 mb-3 card card-body" #form="ngForm" (ngSubmit)="formData(form)">
+        <h1 class="text-centre bg-dark text-white">Form-4</h1>
+        <div class="form-group">
+        <label for="exampleFormControlSelect1">Product Name</label>
+        <input type="text" name="search" id="search" class="form-control" placeholder="Enter Product Name" #text="ngModel" ngModel required minlength="6">
+        <div *ngIf="text.touched && text.invalid">
+        <p class="alert alert-danger" *ngIf="text.errors.required">*this feild is required</p>
+        </div>
+        </div>
+        <div class="form-group">
+        <label for="exampleFormControlSelect1">Product Price</label>
+        <input type="number" name="search" id="search" class="form-control" placeholder="Enter Product Price">
+        </div>
+        <div class="form-group">
+        <label for="exampleFormControlSelect1">Product Description</label>
+        <input type="text" name="search" id="search" class="form-control" placeholder="Enter Product Description">
+        </div>
+        <div class="form-group">
+        <label for="exampleFormControlSelect1">Product ImgUrl</label>
+        <input type="url" name="search" id="search" class="form-control" placeholder="Enter Product Image Url">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Add Product</button>
+        </div>
+

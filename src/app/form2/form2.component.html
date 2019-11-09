@@ -1,0 +1,56 @@
+<form action="" class="col-md-4 offset-4 mt-5 mb-3 card card-body" #form="ngForm" (ngSubmit)="formData(form)">
+        <h1 class="text-centre bg-dark text-white">Form-2</h1>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Candidate Name</label>
+             <input type="text" name="search" id="search" class="form-control" placeholder="Enter Your Name"  #text="ngModel" ngModel required minlength="6">
+             <div *ngIf="text.touched && text.invalid">
+             <p class="alert alert-danger" *ngIf="text.errors.required">*this feild is required</p>
+         </div>
+         <div class="form-group">
+           <label for="exampleFormControlSelect1">Year Of Experiance</label>
+             <input type="number" name="date" id="date" class="form-control" placeholder="Year Of Experiance">
+          </div>
+          <div class="form-group">
+             <label for="exampleFormControlSelect1">Skills</label>
+          <br>
+          <div class="form-check form-check-inline">
+               <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+               <label class="form-check-label" for="inlineRadio1">Java</label>
+          </div>
+          <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                 <label class="form-check-label" for="inlineRadio2">Angular</label>
+          </div>
+          <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                    <label class="form-check-label" for="inlineRadio3">SQL</label>
+          </div>
+          <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                        <label class="form-check-label" for="inlineRadio3">Spring</label>
+          </div>
+        </div>  
+          <div class="form-group">
+                <label for="exampleFormControlSelect1">CCTC</label>
+                <input type="number" name="number" id="number" class="form-control" placeholder="CCTC">
+         </div> 
+         <div class="form-group">
+                <label for="exampleFormControlSelect1">ECTC</label>
+                <input type="number" name="number" id="number" class="form-control" placeholder="ECTC">
+        </div>
+        <div class="form-group">
+         <label for="exampleFormControlSelect1">Ready To Locate</label>
+        <br>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+            <label class="form-check-label" for="inlineRadio3">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+             <label class="form-check-label" for="inlineRadio3">No</label>
+      </div>
+    </div>
+      <div class="form-group">
+            <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Schedule Interview</button>
+      </div>
+

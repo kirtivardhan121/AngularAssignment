@@ -1,0 +1,40 @@
+<form action="" class="col-md-4 offset-4 mt-5 mb-3 card card-body" #form="ngForm" (ngSubmit)="formData(form)">
+        <h1 class="text-centre bg-dark text-white">Form-1</h1>
+        <div class="form-group">
+                <label for="exampleFormControlSelect1">Company Name</label>
+                <input type="text" name="search" id="search" class="form-control" placeholder="Enter Company Name" #text="ngModel" ngModel required minlength="6">
+                <div *ngIf="text.touched && text.invalid">
+                <p class="alert alert-danger" *ngIf="text.errors.required">*this feild is required</p>
+                </div>
+                <div class="form-group">
+                 <label for="exampleFormControlSelect1">Skills</label>
+                 <select class="form-control" id="exampleFormControlSelect1">
+                 <option>Skills</option>
+                 <option>Java</option>
+                 <option>Angular</option>
+                 <option>SQL</option>
+                 <option>Spring</option>
+                 <option>Hibernate</option>
+                 </select>
+                 </div>
+                 <div class="form-group">
+                 <label for="exampleFormControlSelect1">Year Of Experiance</label>
+                 <input type="number" name="date" id="date" class="form-control" placeholder="Year Of Experiance">
+                 </div>
+                 <div class="form-group">
+                 <label for="exampleFormControlSelect1">MCTC</label>
+                 <input type="number" name="number" id="number" class="form-control" placeholder="MCTC">
+                 </div>
+                 </div>
+                 <div class="form-group">
+                 <label for="exampleFormControlSelect1">Location</label>
+                 <input type="text" name="loc" id="loc" class="form-control" placeholder="Location"  #loc="ngModel" ngModel required minlength="3">
+                 <div *ngIf="loc.touched && loc.invalid">
+                 <p class="alert alert-danger" *ngIf="loc.errors.required">*this feild is required</p>
+                 </div>
+                 <div class="form-group">
+                 <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Add Requirement</button>
+                 </div>
+
+                             
+                      

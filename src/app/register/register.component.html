@@ -1,0 +1,83 @@
+<form action="" class="col-md-4 offset-4 mt-5 mb-3 card card-body" #form="ngForm" (ngSubmit)="loginData(form)">
+    <h1 class="text-centre bg-dark text-white">Register Here</h1>
+    <div class="form-group">
+        <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email..." #email="ngModel" ngModel required minlength="6">
+        <div *ngIf="email.touched && email.invalid">
+            <p class="alert alert-danger" *ngIf="email.errors.required">*this feild is required</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password..." #password="ngModel" ngModel required>
+        <div *ngIf="password.touched && password.invalid">
+            <p class="alert alert-danger" *ngIf="password.errors.required">*this feild is required</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Register</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped table-dark col-md-8 offset-2">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.email  | uppercase}}</td>
+            <td>{{user.password | dollar}}</td>
+            <td>{{today | date}}</td>
+            <td>
+                <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="selectUser(user)">
+             Edit
+             </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngIf="selectedUser">
+            <form action="" class="" #form="ngForm" (ngSubmit)="updateData(form)">
+                <h1 class="text-centre bg-dark text-white">Edit Here</h1>
+                <input type="hidden" name="id" id="id" #id="ngModel" ngModel [(ngModel)]="selectedUser.id">
+                <div class="form-group">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email..." #email="ngModel" ngModel required [(ngModel)]="selectedUser.email">
+                    <div *ngIf="email.touched && email.invalid">
+                        <p class="alert alert-danger" *ngIf="email.errors.required">*this feild is required</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password..." #password="ngModel" ngModel required [(ngModel)]="selectedUser.password">
+                    <div *ngIf="password.touched && password.invalid">
+                        <p class="alert alert-danger" *ngIf="password.errors.required">*this feild is required</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Update</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+            </td>
+            <td>
+                <button (click)="deleteData(user)" type="button" class="btn btn-outline-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
